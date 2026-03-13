@@ -2,7 +2,7 @@
 
 ## Sobre o projeto
 
-Esse projeto é o meu portfólio pessoal. Eu criei ele para me apresentar, mostrar minhas habilidades e os projetos que já desenvolvi. Foi feito do zero por mim, escrevendo cada linha de código com HTML, CSS e JavaScript.
+Esse projeto é o meu portfólio pessoal. Criei ele para me apresentar, mostrar minhas habilidades e os projetos que já desenvolvi. 
 
 ## Sobre mim
 
@@ -31,7 +31,7 @@ Sistema de entregas desenvolvido com a IA do Claude.
 Tecnologias: HTML5, CSS, JavaScript.
 
 **Portfólio Pessoal**
-Este próprio portfólio, desenvolvido do zero por mim.
+Este próprio portfólio.
 Tecnologias: HTML, CSS, JavaScript.
 
 ## Como abrir o projeto
