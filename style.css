@@ -1,0 +1,430 @@
+/* Remove espaços padrão do navegador */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variáveis de cor e fonte — EDITE AQUI PARA MUDAR O TEMA */
+:root {
+  --fundo: #231942;          /* cor de fundo da página */
+  --superficie: #5e548e;     /* fundo dos cards */
+  --borda: #5e548e;          /* cor das bordas */
+  --destaque: #e0b1cb;       /* cor principal de destaque */
+  --destaque2: #be95c4;      /* cor secundária de destaque */
+  --texto: #e8e8f0;          /* cor do texto principal */
+  --texto-fraco: #9f86c0;    /* cor do texto secundário */
+  --raio: 14px;              /* arredondamento dos cantos */
+  --fonte-titulo: 'DM Serif Display', serif;   /* fonte dos títulos */
+  --fonte-corpo: 'Poppins', sans-serif; /* fonte do texto */
+
+}
+
+html {
+  scroll-behavior: smooth; /* scroll suave ao clicar nos links do menu */
+}
+
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte-corpo);
+  font-size: 16px;
+  line-height: 1.6;    /* espaçamento entre linhas */
+  overflow-x: hidden;  /* esconde barra de rolagem horizontal */
+}
+
+a {
+  color: inherit;        /* links herdam a cor do pai */
+  text-decoration: none; /* remove sublinhado */
+}
+
+.container {
+  max-width: 1100px;  /* largura máxima do conteúdo */
+  margin: 0 auto;     /* centraliza horizontalmente */
+  padding: 0 24px;    /* espaço nas laterais */
+}
+
+.header {
+  position: fixed;      /* fica fixo no topo ao rolar */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;         /* fica na frente de tudo */
+  background: #1A1528; /* semi-transparente */
+  backdrop-filter: blur(12px);        /* desfoque no fundo */
+  border-bottom: 1px solid var(--borda);
+}
+
+.nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;                    /* organiza em linha */
+  justify-content: space-between;  /* logo à esquerda, menu à direita */
+  align-items: center;             /* centraliza verticalmente */
+}
+
+.logo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  color: var(--destaque);
+}
+
+.menu {
+  list-style: none;  /* remove bolinhas da lista */
+  display: flex;
+  gap: 32px;         /* espaço entre os itens */
+  align-items: center;
+}
+
+.menu a {
+  color: var(--texto-fraco);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s; /* animação suave na mudança de cor */
+}
+
+
+.btn-menu {
+  background: var(--destaque);
+  color: var(--fundo) !important; /* ! força sobrescrever outros estilos */
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 600 !important;
+}
+
+.apresentacao {
+  min-height: 100vh;    /* ocupa pelo menos 100% da altura da tela */
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding: 120px 24px 80px; /* top grande por causa do header fixo */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.texto-apresentacao {
+  flex: 1; /* ocupa o máximo de espaço disponível */
+}
+
+/* Tag pequena no topo */
+.tag-apresentacao {
+  display: inline-block;
+  background: rgba(200, 243, 90, 0.1);
+  color: var(--destaque);
+  border: 1px solid rgba(200, 243, 90, 0.25);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+}
+
+/* Título principal */
+.apresentacao h1 {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.5rem, 5vw, 4rem); /* tamanho fluido — muda com a tela */
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.destaque {
+  color: var(--destaque); /* colore só o nome */
+  font-style: italic;
+}
+
+.descricao {
+  color: var(--texto-fraco);
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+
+/* Botões */
+.botoes-apresentacao {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap; /* quebra linha se não couber */
+}
+
+.botao-primario {
+  background: var(--destaque);
+  color: var(--fundo);
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+
+.botao-secundario {
+  border: 1px solid var(--borda);
+  color: var(--texto);
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+
+/* Card do avatar */
+.card-apresentacao {
+  flex-shrink: 0;  /* não encolhe junto com o resto */
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column; /* empilha os filhos em coluna */
+  align-items: center;
+  gap: 8px;
+  min-width: 220px;
+  text-align: center;
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;  /* transforma em círculo */
+  background: linear-gradient(135deg, var(--destaque), var(--destaque2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem;
+  color: var(--fundo);
+  margin-bottom: 8px;
+}
+
+.card-apresentacao strong {
+  font-size: 1.05rem;
+}
+
+.card-apresentacao span {
+  color: var(--texto-fraco);
+  font-size: 0.85rem;
+}
+
+.disponivel {
+  margin-top: 8px;
+  background: rgba(90, 243, 200, 0.1);
+  color: var(--destaque2) !important;
+  border: 1px solid rgba(90, 243, 200, 0.2);
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.78rem !important;
+}
+
+.titulo-secao {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.tag-secao {
+  display: block;
+  color: var(--destaque);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.titulo-secao h2 {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.habilidades {
+  padding: 100px 0;
+  background: var(--superficie);
+  border-top: 1px solid var(--borda);
+  border-bottom: 1px solid var(--borda);
+}
+
+.habilidades-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.coluna h3 {
+  font-size: 1.1rem;
+  margin-bottom: 28px;
+}
+
+
+.barra-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.barra-item span {
+  font-size: 0.9rem;
+  color: var(--texto-fraco);
+}
+
+.barra {
+  height: 6px;
+  background: var(--borda);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progresso {
+  height: 100%;
+  width: var(--p);  /* usa a variável definida no HTML */
+  background: linear-gradient(90deg, var(--destaque), var(--destaque2));
+  border-radius: 999px;
+}
+
+/* Cards comportamentais */
+.card-soft {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 18px;
+  margin-bottom: 12px;
+}
+
+
+.card-soft > span {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.card-soft strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.card-soft p {
+  color: var(--texto-fraco);
+  font-size: 0.82rem;
+}
+
+.projetos {
+  padding: 100px 0;
+}
+
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* Cada card de projeto (criado pelo JS) */
+.card-projeto {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;                  /* invisível por padrão */
+}
+
+
+.projeto-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.projeto-nome {
+  font-family: var(--fonte-titulo);
+  font-size: 1.2rem;
+}
+
+.projeto-link {
+  font-size: 0.78rem;
+  color: var(--destaque);
+  border: 1px solid rgba(200, 243, 90, 0.3);
+  padding: 4px 12px;
+  border-radius: 50px;
+  white-space: nowrap;
+
+}
+
+
+
+.sem-link {
+  color: var(--texto-fraco);
+  border-color: var(--borda);
+}
+
+.projeto-desc {
+  color: var(--texto-fraco);
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.projeto-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-tech {
+  background: rgba(200, 243, 90, 0.07);
+  color: var(--destaque);
+  border: 1px solid rgba(200, 243, 90, 0.15);
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+}
+
+.contato {
+  padding: 100px 0;
+}
+
+.contato-card {
+  background: linear-gradient(135deg, rgba(200,243,90,0.05), rgba(90,243,200,0.03));
+  border: 1px solid var(--borda);
+  border-radius: 28px;
+  padding: 64px;
+  text-align: center;
+}
+
+.contato-card h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.contato-card p {
+  color: var(--texto-fraco);
+  margin-bottom: 36px;
+}
+
+.contato-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.link-contato {
+  border: 1px solid var(--borda);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+
+.footer {
+  border-top: 1px solid var(--borda);
+  text-align: center;
+  padding: 24px;
+  color: var(--texto-fraco);
+  font-size: 0.85rem;
+}
+
